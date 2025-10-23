@@ -3,10 +3,19 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch App",
+      "name": "Launch Main",
       "request": "launch",
       "mainClass": "hellofx.Main",
-      "vmArgs": "--module-path \"${env:PATH_TO_FX}\" --add-modules javafx.controls,javafx.fxml"
+      "projectName": "HelloFX",
+      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Launch MultipleStageDemo",
+      "request": "launch",
+      "mainClass": "hellofx.MultipleStageDemo",
+      "projectName": "HelloFX",
+      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }

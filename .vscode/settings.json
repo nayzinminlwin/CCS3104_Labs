@@ -1,0 +1,17 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.base.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.controls.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.fxml.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.graphics.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.media.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.swing.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx.web.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\javafx-swt.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\jdk.jsobject.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\jfx.incubator.input.jar",
+        "c:\\Program Files\\Java\\javafx-sdk-25\\lib\\jfx.incubator.richtext.jar"
+    ],
+    "java.debug.settings.vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
+}
