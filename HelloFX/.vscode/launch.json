@@ -3,6 +3,51 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ShowImage",
+      "request": "launch",
+      "mainClass": "hellofx.ShowImage",
+      "projectName": "HelloFX_231b4cf4"
+    },
+    {
+      "type": "java",
+      "name": "NodeStyleRotateDemo",
+      "request": "launch",
+      "mainClass": "hellofx.NodeStyleRotateDemo",
+      "projectName": "HelloFX_231b4cf4"
+    },
+    {
+      "type": "java",
+      "name": "MultipleStageDemo",
+      "request": "launch",
+      "mainClass": "hellofx.MultipleStageDemo",
+      "projectName": "HelloFX_231b4cf4"
+    },
+    {
+      "type": "java",
+      "name": "TenXGrid",
+      "request": "launch",
+      "mainClass": "hellofx.TenXGrid",
+      "projectName": "HelloFX_231b4cf4",
+      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "hellofx.Main",
+      "projectName": "HelloFX_231b4cf4",
+      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "ButtonInPane",
+      "request": "launch",
+      "mainClass": "hellofx.ButtonInPane",
+      "projectName": "HelloFX_231b4cf4",
+      "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
       "name": "Launch Main",
       "request": "launch",
       "mainClass": "hellofx.Main",

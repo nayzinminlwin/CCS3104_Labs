@@ -11,16 +11,17 @@ import javafx.stage.Stage;
 public class TenXGrid extends Application {
     @Override // Override the start method in the Application class
     public void start(Stage primaryStage) {
-        // Create a pane to hold the image views
+        // Create a pane to hold the grids
         GridPane pane = new GridPane();
-        pane.setPadding(new Insets(10, 10, 10, 10));
+        pane.setPadding(new Insets(15, 15, 15, 15));
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 TextField textField = new TextField();
                 textField.setPrefColumnCount(1);
                 textField.setAlignment(Pos.CENTER);
-                int k = GenerateRandNumbers(0, 1);
+                // int k = GenerateRandNumbers(0, 1);
+                int k = Math.random() < 0.5 ? 0 : 1; // Alternative way to generate 0 or 1
                 textField.setText(k + "");
                 pane.add(textField, j, i);
             }
