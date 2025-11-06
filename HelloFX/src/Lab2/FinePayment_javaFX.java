@@ -24,6 +24,7 @@ public class FinePayment_javaFX extends Application {
         gPane.setPadding(new Insets(10, 10, 10, 10));
         gPane.setHgap(5.5);
         gPane.setVgap(5.5);
+        // lets change the grid into a responsive one
 
         // Bold the Title and Centre it
         Label titleLabel = new Label("Vehicle Fine Payment System");
@@ -65,7 +66,10 @@ public class FinePayment_javaFX extends Application {
             }
             int speed = 0;
             try {
-                speed = Integer.parseInt(speedTextField.getText());
+                speed = Integer.parseInt(speedTextField.getText().trim());
+                if (speed < 0) {
+                    throw new NumberFormatException("Negative speed");
+                }
             } catch (NumberFormatException ex) {
                 System.out.println("Please enter a valid speed.");
                 return;
