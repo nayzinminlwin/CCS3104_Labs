@@ -3,6 +3,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ButtonDemo",
+      "request": "launch",
+      "mainClass": "hellofx.ButtonDemo",
+      "projectName": "HelloFX_231b4cf4"
+    },
+    {
+      "type": "java",
+      "name": "ShowGridPane",
+      "request": "launch",
+      "mainClass": "hellofx.ShowGridPane",
+      "projectName": "HelloFX_231b4cf4"
+    },
+    {
+      "type": "java",
+      "name": "FinePayment_javaFX",
+      "request": "launch",
+      "mainClass": "Lab2.FinePayment_javaFX",
+      "projectName": "HelloFX_231b4cf4"
+    },
+    {
+      "type": "java",
       "name": "ShowImage",
       "request": "launch",
       "mainClass": "hellofx.ShowImage",
