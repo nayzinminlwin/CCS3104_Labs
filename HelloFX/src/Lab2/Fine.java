@@ -2,19 +2,21 @@ package Lab2;
 
 public class Fine {
 
-    public static double CarFine(int carSpeed, int speedLimit) {
+    public static double VehicleFine(String vehicleType, int speed) {
         double fine = 0;
-        if (carSpeed >= speedLimit) {
-            fine = ((carSpeed - speedLimit) * (carSpeed - speedLimit) * 0.5);
-        }
-        System.out.println("Calculated car fine: " + fine);
-        return fine;
-    }
+        int speedLimit = 0;
+        vehicleType = vehicleType.trim().toLowerCase();
 
-    public static double BikeFine(int bikeSpeed, int speedLimit) {
-        double fine = 0;
-        if (bikeSpeed >= speedLimit) {
-            fine = (30 + (bikeSpeed - speedLimit));
+        if (vehicleType.equals("car")) {
+            speedLimit = 110;
+            if (speed >= speedLimit) {
+                fine = ((speed - speedLimit) * (speed - speedLimit) * 0.5);
+            }
+        } else if (vehicleType.equals("bike")) {
+            speedLimit = 70;
+            if (speed >= speedLimit) {
+                fine = (30 + (speed - speedLimit));
+            }
         }
         System.out.println("Calculated bike fine: " + fine);
         return fine;

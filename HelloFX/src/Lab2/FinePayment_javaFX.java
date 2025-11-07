@@ -19,12 +19,12 @@ public class FinePayment_javaFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        // First create a Grid for the form
         GridPane gPane = new GridPane();
         gPane.setAlignment(Pos.CENTER);
         gPane.setPadding(new Insets(10, 10, 10, 10));
         gPane.setHgap(5.5);
         gPane.setVgap(5.5);
-        // lets change the grid into a responsive one
 
         // Bold the Title and Centre it
         Label titleLabel = new Label("Vehicle Fine Payment System");
@@ -34,6 +34,7 @@ public class FinePayment_javaFX extends Application {
         // Merging the two columns for the title
         GridPane.setColumnSpan(gPane.getChildren().get(0), 2);
 
+        // initializing the labels and input fields
         Label vehicleTypeLabel = new Label("Vehicle Type:");
         RadioButton carButton = new RadioButton("Car");
         RadioButton bikeButton = new RadioButton("Bike");
@@ -46,50 +47,42 @@ public class FinePayment_javaFX extends Application {
 
         Button calc = new Button("Calculate Fine");
 
+        // When button Clicked,
         calc.setOnAction(e -> {
-            System.out.println("Calculate Fine button clicked");
             String vehicleType = "";
-            if (carButton.isSelected()) {
-                System.out.println("Car selected");
-                vehicleType = "Car";
-            } else if (bikeButton.isSelected()) {
-                System.out.println("Bike selected");
-                vehicleType = "Bike";
-            } else {
-                System.out.println("Please select a vehicle type.");
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Input Error");
-                alert.setHeaderText("ERROR!!");
-                alert.setContentText("Please select a vehicle type.");
-                alert.showAndWait();
-                return;
-            }
             int speed = 0;
+
             try {
+                // Radio button validation
+                if (carButton.isSelected()) {
+                    vehicleType = "Car";
+                } else if (bikeButton.isSelected()) {
+                    vehicleType = "Bike";
+                } else {
+                    throw new Exception("No vehicle type selected");
+                }
+
+                // speed validation
                 speed = Integer.parseInt(speedTextField.getText().trim());
                 if (speed < 0) {
-                    throw new NumberFormatException("Negative speed");
+                    throw new NumberFormatException("Speed cannot be negative!!!");
                 }
-            } catch (NumberFormatException ex) {
-                System.out.println("Please enter a valid speed.");
+
+            } catch (Exception ex) {
+                ShowError("Input Error", "ERROR!!", ex.getMessage());
                 return;
             }
-            double fine = 0;
-            if (vehicleType.equals("Car")) {
-                fine = Fine.CarFine(speed, 110);
-            } else if (vehicleType.equals("Bike")) {
-                fine = Fine.BikeFine(speed, 70);
-            }
+
+            // Call the VehicleFine class from Fine.java to calculate the fine
+            double fine = Fine.VehicleFine(vehicleType, speed);
+
+            // Print message to console and Call ShowInfo function for Alert Box
             String msg = "Fine for " + vehicleType + " going at " + speed + " km/h is: RM " + fine;
             System.out.println(msg);
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Fine Amount");
-            alert.setHeaderText(null);
-            alert.setContentText(msg);
-            alert.showAndWait();
+            ShowInfo("Fine Calculation", null, msg);
         });
 
-        // add controls to the grid
+        // add labels and inputFields to the grid
         gPane.add(vehicleTypeLabel, 0, 1);
         gPane.add(carButton, 1, 1);
         gPane.add(bikeButton, 1, 2);
@@ -103,6 +96,22 @@ public class FinePayment_javaFX extends Application {
         primaryStage.setScene(myScene);
 
         primaryStage.show();
+    }
+
+    private void ShowError(String title, String header, String ContentText) {
+        Alert myAlert = new Alert(AlertType.ERROR);
+        myAlert.setTitle(title);
+        myAlert.setHeaderText(header);
+        myAlert.setContentText(ContentText);
+        myAlert.showAndWait();
+    }
+
+    private void ShowInfo(String title, String header, String message) {
+        Alert myInfoAlert = new Alert(AlertType.INFORMATION);
+        myInfoAlert.setTitle(title);
+        myInfoAlert.setHeaderText(header);
+        myInfoAlert.setContentText(message);
+        myInfoAlert.showAndWait();
     }
 
     public static void main(String[] args) {
