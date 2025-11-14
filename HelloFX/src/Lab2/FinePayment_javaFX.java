@@ -50,7 +50,7 @@ public class FinePayment_javaFX extends Application {
         // When button Clicked,
         calc.setOnAction(e -> {
             String vehicleType = "";
-            int speed = 0;
+            double speed = 0;
 
             try {
                 // Radio button validation
@@ -63,7 +63,7 @@ public class FinePayment_javaFX extends Application {
                 }
 
                 // speed validation
-                speed = Integer.parseInt(speedTextField.getText().trim());
+                speed = Double.parseDouble(speedTextField.getText().trim());
                 if (speed < 0) {
                     throw new NumberFormatException("Speed cannot be negative!!!");
                 }
@@ -77,7 +77,7 @@ public class FinePayment_javaFX extends Application {
             double fine = Fine.VehicleFine(vehicleType, speed);
 
             // Print message to console and Call ShowInfo function for Alert Box
-            String msg = "Fine for " + vehicleType + " going at " + speed + " km/h is: RM " + fine;
+            String msg = String.format("Fine for %s going at %.2f km/h is: RM %.2f", vehicleType, speed, fine);
             System.out.println(msg);
             ShowInfo("Fine Calculation", null, msg);
 

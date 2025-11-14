@@ -2,7 +2,7 @@ package Lab2;
 
 public class Fine {
 
-    public static double VehicleFine(String vehicleType, int speed) {
+    public static double VehicleFine(String vehicleType, double speed) {
         double fine = 0;
         int speedLimit = 0;
         vehicleType = vehicleType.trim().toLowerCase();
