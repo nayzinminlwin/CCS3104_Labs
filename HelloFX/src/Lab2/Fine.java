@@ -18,7 +18,7 @@ public class Fine {
                 fine = (30 + (speed - speedLimit));
             }
         }
-        System.out.println("Calculated bike fine: " + fine);
+        System.out.println("Calculated fine: " + fine);
         return fine;
     }
 

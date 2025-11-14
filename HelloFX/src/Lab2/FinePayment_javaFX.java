@@ -80,6 +80,9 @@ public class FinePayment_javaFX extends Application {
             String msg = "Fine for " + vehicleType + " going at " + speed + " km/h is: RM " + fine;
             System.out.println(msg);
             ShowInfo("Fine Calculation", null, msg);
+
+            speedTextField.clear();
+            vehicleTypeGroup.selectToggle(null);
         });
 
         // add labels and inputFields to the grid
