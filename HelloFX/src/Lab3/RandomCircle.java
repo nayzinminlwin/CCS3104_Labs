@@ -15,7 +15,7 @@ public class RandomCircle extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Your code to create random circles goes here
-        Circle myCircle = new Circle(250, 50, 20);
+        Circle myCircle = new Circle(250, 50, 10);
         myCircle.setStyle("-fx-fill: pink; -fx-stroke: grey; -fx-stroke-width: 1;");
 
         Pane pane = new Pane();
