@@ -32,6 +32,9 @@ public class RandomCircle extends Application {
             clickCount++;
             double x = Math.random() * (scene.getWidth() - myCircle.getRadius() * 2) + myCircle.getRadius();
             double y = Math.random() * (scene.getHeight() - myCircle.getRadius() * 2) + myCircle.getRadius();
+            // change circle to random color
+            myCircle.setStyle("-fx-fill: rgb(" + (int) (Math.random() * 256) + "," + (int) (Math.random() * 256) + ","
+                    + (int) (Math.random() * 256) + "); -fx-stroke: grey; -fx-stroke-width: 1;");
             myCircle.setCenterX(x);
             myCircle.setCenterY(y);
 
@@ -40,7 +43,7 @@ public class RandomCircle extends Application {
                 startTime = System.currentTimeMillis();
             }
 
-            if (clickCount >= 20) {
+            if (clickCount >= 5) {
                 // record end time
                 endTime = System.currentTimeMillis();
                 long totalTime = endTime - startTime;
