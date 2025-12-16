@@ -95,7 +95,7 @@ public class EightQueens_multiThreading extends Application {
         }
 
         if (currentRow == 0) {
-            System.out.println("Nooo!Thread starting with column " + index + " backtracked past the start.");
+            System.out.println("Thread starting with column " + index + " backtracked past the start.");
             return false; // No solution found (backtracked past the start)
         } else if (currentRow == BOARD_SIZE) {
 
@@ -152,9 +152,6 @@ public class EightQueens_multiThreading extends Application {
 
             int previousRow = targetRow - distance;
             int previousQueenColumn = myQueen[previousRow];
-
-            // System.out.println("Checking row " + targetRow + ", column " + targetColumn +
-            // " against previous row " + previousRow + ", column " + previousQueenColumn);
 
             // 1. Check same column
             if (previousQueenColumn == targetColumn
