@@ -22,9 +22,7 @@ public class EightQueens_multiThreading extends Application {
     public static ReentrantLock winnerLock = new ReentrantLock();
 
     @Override
-    public void start(Stage primaryStage) {
-        // searchForSolution();
-
+    public void start(Stage primaryStage) { // searchForSolution();
         for (int i = 0; i < BOARD_SIZE; i++) {
             final int index = i;
             if (!solutionFound) {
@@ -105,6 +103,7 @@ public class EightQueens_multiThreading extends Application {
                 if (solutionFound) {
                     System.out.printf("New Solution found by thread starting with column %d, \nQueens : %s \n", index,
                             java.util.Arrays.toString(myQueen));
+
                     return true;
                 }
 
