@@ -2,7 +2,8 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "lib/ojdbc17.jar"
     ],
     "java.debug.settings.vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-25/lib\" --add-modules javafx.controls,javafx.fxml"
 }

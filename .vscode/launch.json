@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "NewEventPage",
+            "request": "launch",
+            "mainClass": "Project_AnnouncementBoard.NewEventPage",
+            "projectName": "myLabFiles_4c684b15"
+        },
+        {
+            "type": "java",
+            "name": "LogInPage",
+            "request": "launch",
+            "mainClass": "Project_AnnouncementBoard.LogInPage",
+            "projectName": "myLabFiles_4c684b15"
+        },
+        {
+            "type": "java",
+            "name": "DBConnection",
+            "request": "launch",
+            "mainClass": "Project_AnnouncementBoard.DBConnection",
+            "projectName": "myLabFiles_4c684b15"
+        },
+        {
+            "type": "java",
+            "name": "HomePage",
+            "request": "launch",
+            "mainClass": "Project_AnnouncementBoard.HomePage",
+            "projectName": "myLabFiles_4c684b15"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
