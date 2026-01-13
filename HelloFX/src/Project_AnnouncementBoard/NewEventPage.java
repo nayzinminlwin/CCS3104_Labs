@@ -183,6 +183,28 @@ public class NewEventPage extends Application {
         VBox categoryBox = new VBox(10);
         categoryBox.getChildren().addAll(categoryLabel, categoryField);
 
+        // Share Link section
+        Label shareLinkLabel = new Label("Share Link / Register Link (Optional)");
+        shareLinkLabel.setFont(Font.font("Segoe UI", FontWeight.BOLD, 15));
+        shareLinkLabel.setStyle("-fx-text-fill: #050505;");
+
+        TextField shareLinkField = new TextField();
+        shareLinkField.setPromptText("e.g., https://forms.gle/abc123 or https://event-website.com");
+        shareLinkField.setFont(Font.font("Segoe UI", 14));
+        shareLinkField.setStyle(
+                "-fx-control-inner-background: white; " +
+                        "-fx-background-color: white; " +
+                        "-fx-background-radius: 8; " +
+                        "-fx-border-color: #e0e0e0; " +
+                        "-fx-border-radius: 8; " +
+                        "-fx-border-width: 1.5; " +
+                        "-fx-padding: 12; " +
+                        "-fx-background-insets: 0; " +
+                        "-fx-border-insets: 0;");
+
+        VBox shareLinkBox = new VBox(10);
+        shareLinkBox.getChildren().addAll(shareLinkLabel, shareLinkField);
+
         // Image upload section
         Label imageLabel = new Label("Event Image");
         imageLabel.setFont(Font.font("Segoe UI", FontWeight.BOLD, 15));
@@ -290,6 +312,7 @@ public class NewEventPage extends Application {
         publishButton.setOnAction(e -> {
             String caption = captionArea.getText().trim();
             String category = categoryField.getText().trim();
+            String shareLink = shareLinkField.getText().trim();
 
             if (caption.isEmpty()) {
                 statusLabel.setText("⚠️ Please enter event description");
@@ -306,13 +329,14 @@ public class NewEventPage extends Application {
             }
 
             // Publish event
-            if (publishEvent(caption, category, selectedImageFile)) {
+            if (publishEvent(caption, category, shareLink, selectedImageFile)) {
                 // Show success dialog
                 showSuccessDialog();
 
                 // Clear form completely
                 captionArea.clear();
                 categoryField.clear();
+                shareLinkField.clear();
                 selectedImageFile = null;
                 imageStatusLabel.setText("No image selected");
                 imageStatusLabel.setStyle("-fx-text-fill: #65676b;");
@@ -331,6 +355,7 @@ public class NewEventPage extends Application {
         formCard.getChildren().addAll(
                 captionBox,
                 categoryBox,
+                shareLinkBox,
                 imageBox,
                 statusLabel,
                 publishButton);
@@ -364,7 +389,7 @@ public class NewEventPage extends Application {
     /**
      * Publishes event to database using PreparedStatement
      */
-    private boolean publishEvent(String caption, String category, File imageFile) {
+    private boolean publishEvent(String caption, String category, String shareLink, File imageFile) {
         if (connection == null) {
             System.err.println("Database connection failed");
             return false;
@@ -388,13 +413,25 @@ public class NewEventPage extends Application {
                 }
             }
 
+            // Detect MIME type from file extension
+            String mimeType = "application/octet-stream"; // Default
+            String fileName = imageFile.getName().toLowerCase();
+            if (fileName.endsWith(".png")) {
+                mimeType = "image/png";
+            } else if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg")) {
+                mimeType = "image/jpeg";
+            } else if (fileName.endsWith(".gif")) {
+                mimeType = "image/gif";
+            }
+
             // Insert image record using PreparedStatement
-            String imageInsert = "INSERT INTO AB_IMAGES (IMAGE_ID, FILE_NAME, FILE_PATH, UPLOADED_AT) " +
-                    "VALUES (?, ?, ?, SYSTIMESTAMP)";
+            String imageInsert = "INSERT INTO AB_IMAGES (IMAGE_ID, FILE_NAME, FILE_PATH, MIME_TYPE, UPLOADED_AT) " +
+                    "VALUES (?, ?, ?, ?, SYSTIMESTAMP)";
             try (PreparedStatement pstmt = connection.prepareStatement(imageInsert)) {
                 pstmt.setInt(1, imageId);
                 pstmt.setString(2, imageFile.getName());
                 pstmt.setString(3, imagePath);
+                pstmt.setString(4, mimeType);
                 pstmt.executeUpdate();
             }
 
@@ -409,9 +446,9 @@ public class NewEventPage extends Application {
             }
 
             // Insert post record using PreparedStatement
-            String postInsert = "INSERT INTO AB_POSTS (POST_ID, MATRIC_NUM, CAPTION, IMAGE_ID, CATEGORY, ACTIVE_STATUS, UPLOAD_TIME) "
+            String postInsert = "INSERT INTO AB_POSTS (POST_ID, MATRIC_NUM, CAPTION, IMAGE_ID, CATEGORY, SHARE_SLUG, ACTIVE_STATUS, UPLOAD_TIME) "
                     +
-                    "VALUES (?, ?, ?, ?, ?, 1, SYSTIMESTAMP)";
+                    "VALUES (?, ?, ?, ?, ?, ?, 1, SYSTIMESTAMP)";
             try (PreparedStatement pstmt = connection.prepareStatement(postInsert)) {
                 pstmt.setInt(1, postId);
                 pstmt.setString(2, matricNum);
@@ -421,6 +458,11 @@ public class NewEventPage extends Application {
                     pstmt.setNull(5, java.sql.Types.VARCHAR);
                 } else {
                     pstmt.setString(5, category);
+                }
+                if (shareLink.isEmpty()) {
+                    pstmt.setNull(6, java.sql.Types.VARCHAR);
+                } else {
+                    pstmt.setString(6, shareLink);
                 }
                 pstmt.executeUpdate();
             }

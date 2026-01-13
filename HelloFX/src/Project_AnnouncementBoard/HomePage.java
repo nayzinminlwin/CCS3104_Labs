@@ -498,8 +498,53 @@ public class HomePage extends Application {
             }).start();
         });
 
-        HBox buttonBox = new HBox(shareButton);
+        // Open Link button (only if shareSlug exists)
+        HBox buttonBox = new HBox(10);
         buttonBox.setAlignment(Pos.CENTER_LEFT);
+        buttonBox.getChildren().add(shareButton);
+
+        if (shareSlug != null && !shareSlug.isEmpty()) {
+            Button openLinkButton = new Button("🔗 Open Link");
+            openLinkButton.setStyle(
+                    "-fx-background-color: #e91e63; " +
+                            "-fx-text-fill: white; " +
+                            "-fx-font-size: 13px; " +
+                            "-fx-font-weight: bold; " +
+                            "-fx-padding: 8 16 8 16; " +
+                            "-fx-background-radius: 5; " +
+                            "-fx-cursor: hand;");
+
+            openLinkButton.setOnMouseEntered(e -> openLinkButton.setStyle(
+                    "-fx-background-color: #c2185b; " +
+                            "-fx-text-fill: white; " +
+                            "-fx-font-size: 13px; " +
+                            "-fx-font-weight: bold; " +
+                            "-fx-padding: 8 16 8 16; " +
+                            "-fx-background-radius: 5; " +
+                            "-fx-cursor: hand;"));
+
+            openLinkButton.setOnMouseExited(e -> openLinkButton.setStyle(
+                    "-fx-background-color: #e91e63; " +
+                            "-fx-text-fill: white; " +
+                            "-fx-font-size: 13px; " +
+                            "-fx-font-weight: bold; " +
+                            "-fx-padding: 8 16 8 16; " +
+                            "-fx-background-radius: 5; " +
+                            "-fx-cursor: hand;"));
+
+            openLinkButton.setOnAction(e -> {
+                try {
+                    // Open URL in default browser
+                    java.awt.Desktop.getDesktop().browse(java.net.URI.create(shareSlug));
+                } catch (Exception ex) {
+                    System.err.println("Failed to open link: " + ex.getMessage());
+                    ex.printStackTrace();
+                }
+            });
+
+            buttonBox.getChildren().add(openLinkButton);
+        }
+
         card.getChildren().add(buttonBox);
 
         return card;
