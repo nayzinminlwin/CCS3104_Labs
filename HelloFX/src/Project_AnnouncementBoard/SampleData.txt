@@ -104,3 +104,32 @@ image : FCSIT Shirt
 ===================================================================================================================================================================================
 ===================================================================================================================================================================================
 ===================================================================================================================================================================================
+
+    /**
+     * Authenticates user credentials against database
+     * 
+     * SECURITY: Uses PreparedStatement to prevent SQL injection attacks!
+     * 
+     * How SQL Injection Prevention Works:
+     * ❌ BAD (Vulnerable):
+     * String query = "SELECT * FROM AB_USERS WHERE MATRIC_NUM = '" + matricNum +
+     * "'";
+     * // Attacker can input: A123' OR '1'='1
+     * // Result: SELECT * FROM AB_USERS WHERE MATRIC_NUM = 'A123' OR '1'='1'
+     * // This bypasses authentication!
+     * 
+     * ✅ GOOD (Secure):
+     * PreparedStatement with ? placeholders
+     * The '?' is replaced safely - input treated as DATA not SQL CODE
+     * 
+     * Authentication Logic:
+     * - Query searches for exact match of BOTH matric number AND password
+     * - If resultSet.next() returns true → Match found → Login success
+     * - If resultSet.next() returns false → No match → Login failed
+     * 
+     * TODO: Implement password hashing (BCrypt/PBKDF2) instead of plain text
+     * 
+     * @param matricNum User's matric number from input field
+     * @param password  User's password from input field (currently plain text)
+     * @return true if credentials match database record, false otherwise
+     */
