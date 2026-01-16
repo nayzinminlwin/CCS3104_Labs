@@ -2,12 +2,12 @@
 import java.rmi.*;
 import java.rmi.server.*;
 
-public class CalcServer extends UnicastRemoteObject implements CalcInterface {
+public class CalcImplementation extends UnicastRemoteObject implements CalcInterface {
 
     private double radius;
     private double area;
 
-    public CalcServer() throws RemoteException {
+    public CalcImplementation() throws RemoteException {
         super();
     }
 

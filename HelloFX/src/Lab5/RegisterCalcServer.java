@@ -7,7 +7,7 @@ public class RegisterCalcServer {
     public static void main(String[] args) {
         try {
             // Create the CalcServer object
-            CalcServer calcServer = new CalcServer();
+            CalcImplementation myCalcImplementation = new CalcImplementation();
             Registry registry;
 
             try {
@@ -21,8 +21,8 @@ public class RegisterCalcServer {
             }
 
             // Bind the CalcServer to the registry with name "CalcServer"
-            registry.rebind("CalcServer", calcServer);
-            System.out.println("CalcServer " + calcServer + " registered successfully");
+            registry.rebind("CalcServer", myCalcImplementation);
+            System.out.println("CalcServer " + myCalcImplementation + " registered successfully");
             System.out.println("Server is ready and waiting for client connections...");
 
             // Keep the server running

@@ -1,42 +1,70 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "NewEventPage",
-            "request": "launch",
-            "mainClass": "Project_AnnouncementBoard.NewEventPage",
-            "projectName": "myLabFiles_4c684b15"
-        },
-        {
-            "type": "java",
-            "name": "LogInPage",
-            "request": "launch",
-            "mainClass": "Project_AnnouncementBoard.LogInPage",
-            "projectName": "myLabFiles_4c684b15"
-        },
-        {
-            "type": "java",
-            "name": "DBConnection",
-            "request": "launch",
-            "mainClass": "Project_AnnouncementBoard.DBConnection",
-            "projectName": "myLabFiles_4c684b15"
-        },
-        {
-            "type": "java",
-            "name": "HomePage",
-            "request": "launch",
-            "mainClass": "Project_AnnouncementBoard.HomePage",
-            "projectName": "myLabFiles_4c684b15"
-        },
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "ClientMain",
+      "request": "launch",
+      "mainClass": "Chap6.RMI_n_DB.ClientMain",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "Server",
+      "request": "launch",
+      "mainClass": "Chap6.RMI_n_DB.Server",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "CalcClient",
+      "request": "launch",
+      "mainClass": "CalcClient",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "RegisterCalcServer",
+      "request": "launch",
+      "mainClass": "RegisterCalcServer",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "NewEventPage",
+      "request": "launch",
+      "mainClass": "Project_AnnouncementBoard.NewEventPage",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "LogInPage",
+      "request": "launch",
+      "mainClass": "Project_AnnouncementBoard.LogInPage",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "DBConnection",
+      "request": "launch",
+      "mainClass": "Project_AnnouncementBoard.DBConnection",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "HomePage",
+      "request": "launch",
+      "mainClass": "Project_AnnouncementBoard.HomePage",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    }
+  ]
 }
