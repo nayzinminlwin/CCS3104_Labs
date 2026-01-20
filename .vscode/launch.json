@@ -6,6 +6,41 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ScoreClient",
+      "request": "launch",
+      "mainClass": "Lab6.ScoreClient",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "ScoreRMI_Server",
+      "request": "launch",
+      "mainClass": "Lab6.ScoreRMI_Server",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "FinePayment_javaFX",
+      "request": "launch",
+      "mainClass": "Lab2.FinePayment_javaFX",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "RandomCircle",
+      "request": "launch",
+      "mainClass": "Lab3.RandomCircle",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "FirstDB",
+      "request": "launch",
+      "mainClass": "Chap6.FirstDB",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
       "name": "ClientMain",
       "request": "launch",
       "mainClass": "Chap6.RMI_n_DB.ClientMain",
