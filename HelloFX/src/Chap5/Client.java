@@ -14,6 +14,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Client extends Application {
+
+    // Create socket to connect to server
+    Socket socket = null;
+
     // IO streams
     DataOutputStream toServer = null;
     DataInputStream fromServer = null;
@@ -42,6 +46,21 @@ public class Client extends Application {
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
 
+        try {
+            // Create a socket to connect to the server
+            socket = new Socket("localhost", 8000);
+            // Socket socket = new Socket("130.254.204.36", 8000);
+            // Socket socket = new Socket("drake.Armstrong.edu", 8000);
+
+            // Create an input stream to receive data from the server
+            fromServer = new DataInputStream(socket.getInputStream());
+
+            // Create an output stream to send data to the server
+            toServer = new DataOutputStream(socket.getOutputStream());
+        } catch (IOException ex) {
+            ta.appendText(ex.toString() + '\n');
+        }
+
         tf.setOnAction(e -> {
             try {
                 // Get the radius from the text field
@@ -63,20 +82,20 @@ public class Client extends Application {
             }
         });
 
-        try {
-            // Create a socket to connect to the server
-            Socket socket = new Socket("localhost", 8000);
-            // Socket socket = new Socket("130.254.204.36", 8000);
-            // Socket socket = new Socket("drake.Armstrong.edu", 8000);
+        primaryStage.setOnCloseRequest(e -> {
+            try {
+                if (toServer != null)
+                    toServer.close();
+                if (fromServer != null)
+                    fromServer.close();
 
-            // Create an input stream to receive data from the server
-            fromServer = new DataInputStream(socket.getInputStream());
+                // close the socket
+                socket.close();
 
-            // Create an output stream to send data to the server
-            toServer = new DataOutputStream(socket.getOutputStream());
-        } catch (IOException ex) {
-            ta.appendText(ex.toString() + '\n');
-        }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     /**

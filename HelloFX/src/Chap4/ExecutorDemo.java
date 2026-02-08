@@ -15,5 +15,8 @@ public class ExecutorDemo {
 
         // Shut down the executor
         executor.shutdown();
+
+        System.out.println(executor.isShutdown());
+        System.out.println(executor.isTerminated());
     }
 }

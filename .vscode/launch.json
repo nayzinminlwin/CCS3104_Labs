@@ -6,6 +6,48 @@
   "configurations": [
     {
       "type": "java",
+      "name": "FindGradeUsingPreparedStatement",
+      "request": "launch",
+      "mainClass": "Chap6.FindGradeUsingPreparedStatement",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "Client",
+      "request": "launch",
+      "mainClass": "Chap5.deadlock.Client",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "Client",
+      "request": "launch",
+      "mainClass": "Chap5.Client",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "MultiThreadServer",
+      "request": "launch",
+      "mainClass": "Chap5.MultiThreadServer",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "AccountWithoutSync",
+      "request": "launch",
+      "mainClass": "Chap4.AccountWithoutSync",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
+      "name": "FlashText",
+      "request": "launch",
+      "mainClass": "Chap4.FlashText",
+      "projectName": "myLabFiles_4c684b15"
+    },
+    {
+      "type": "java",
       "name": "ScoreClient",
       "request": "launch",
       "mainClass": "Lab6.ScoreClient",
